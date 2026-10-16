@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I'm Sorry 🖤</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: #000;
+  overflow: hidden;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+#rain {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+.sorry {
+  position: absolute;
+  top: -100px;
+  padding: 9px 22px;
+  color: #fff;
+  background: linear-gradient(135deg, #171717, #350909);
+  border: 1px solid #a52a2a;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  box-shadow: 0 0 12px #4d0000;
+  white-space: nowrap;
+  animation: fall linear forwards;
+}
+@keyframes fall {
+  from {
+    transform: translateY(-100px) rotate(-5deg);
+  }
+  to {
+    transform: translateY(115vh) rotate(5deg);
+  }
+}
+</style>
+</head>
+<body>
+<div id="rain"></div>
+<script>
+const rain = document.getElementById("rain");
+function makeSorry() {
+  const banner = document.createElement("div");
+  banner.className = "sorry";
+  banner.textContent = "Sorry 🖤";
+  banner.style.left =
+    Math.random() * 85 + "%";
+  const duration = 3 + Math.random() * 5;
+  banner.style.animationDuration = duration + "s";
+  banner.style.fontSize =
+    (14 + Math.random() * 10) + "px";
+  rain.appendChild(banner);
+  setTimeout(() => {
+    banner.remove();
+  }, duration * 1000);
+}
+setInterval(makeSorry, 180);
+</script>
+</body>
+</html>
